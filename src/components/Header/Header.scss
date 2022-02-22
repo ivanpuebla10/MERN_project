@@ -1,0 +1,19 @@
+@import '../../colors.scss';
+
+.header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1em;
+    background-color: $principal_color;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    opacity: 0.8;
+}
+
+.header div span{
+    margin: 1em;
+}
