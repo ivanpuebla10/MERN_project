@@ -1,0 +1,22 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: justify;
+    font-size: 15px;
+}
+
+.profile-pic {
+    width:30%;
+    height:30%;
+    border-radius:160px;
+    position:absolute;
+    z-index:1
+}
+
+.banner-pic {
+    position:absolute;
+    z-index: 0;
+    width: 100%;
+}
