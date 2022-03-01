@@ -5,6 +5,8 @@ import { login, reset } from "../../features/auth/authSlice";
 import { notification } from "antd";
 import "antd/dist/antd.css";
 import "./Login.scss";
+import { Link } from "react-router-dom";
+
 
 const Login = () => {
 const [formData, setFormData] = useState({ email: "", password: ""});
@@ -48,7 +50,7 @@ const [formData, setFormData] = useState({ email: "", password: ""});
         <input type="password" name="password" value={password} id="password" placeholder="Contraseña" onChange={onChange}/>
         <a href="">¿Has olvidado tu contraseña?</a>
         <button type="submit">Iniciar sesión</button>
-        <p>¿Estás empezando a usar LinkedIn?<a href="">Unirse ahora.</a></p>
+        <p>¿Estás empezando a usar LinkedIn?<Link to="/signup">Unirse ahora</Link></p>
     </form>
     </div>
     </div>

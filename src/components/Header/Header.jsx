@@ -14,22 +14,20 @@ const Header = () => {
     dispatch(logout());
     navigate("/signin");
   };
-  console.log(user)
   return (
     <div className="header">
       
       <>       
        {user ? 
         <>
-        <span><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" height="40px" width="40px"></img></span>
+          <span><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" height="40px" width="40px"></img></span>
           <span><Link to="/">Home</Link></span>
           <span><Link to="/profile" >{user.user.username.toUpperCase()}</Link> </span>
           <span><Link to="/" onClick={onLogout}>Logout</Link></span>
           </>
          : 
           <>
-      {/* <span><img src="https://logowik.com/content/uploads/images/linkedin-new4645.jpg"></img></span> */}
-      <span><img src={logo}></img></span>
+      <span><Link to="/"><img src={logo}></img></Link></span>
       <span><Link to="/signup">Unirse ahora</Link></span>
       <span><Link to="/signin"><button>Iniciar sesión</button></Link></span>
           </>

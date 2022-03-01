@@ -1,5 +1,6 @@
 import React from 'react'
 import Posts from './Posts/Posts'
+import Welcome from '../Welcome/Welcome'
 import { useSelector } from "react-redux";
 
 
@@ -13,9 +14,9 @@ const Home = () => {
       <Posts/>
           </>
          : 
-          <>
-        <h1>ACA VA UN COMPONENTE DE BIENVENIDA</h1>
-          </>
+      <>
+      <Welcome />       
+      </>
         }
 
     </div>

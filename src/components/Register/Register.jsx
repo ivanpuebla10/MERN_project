@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { register, reset } from "../../features/auth/authSlice";
 import { notification } from "antd";
 import "antd/dist/antd.css";
+import { Link } from "react-router-dom";
+
 
 const Register = () => {
     const [formData, setFormData] = useState({ username: "",email: "",password: "",password2: "", });
@@ -52,6 +54,7 @@ const Register = () => {
         <input type="password" name="password2" value={password2} placeholder="Repeat Password" id="password2" onChange={onChange}/>
         <button type="submit" className="submit-button">Continuar</button>
         <button className="back-button">Volver</button>
+        <p>¿Ya eres miembro de LinkedIn? <Link to="/signin">Iniciar sesión</Link></p>
     </form>
     </div>
   )

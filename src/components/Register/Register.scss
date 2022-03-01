@@ -26,25 +26,34 @@ form input{
 
 .submit-button{
     all: unset;
-    background-color: blue;
+    background-color: #0a66c2;
     padding: 1em;
-    border-radius: 1em;
-    color: white;
+    border-radius: 1.8em;   
+     color: white;
     cursor: pointer;
+    text-align: center;
 }
 
 .back-button {
     all: unset;
     background-color: transparent;
-    padding: 1em;
+    padding: 0;
     border-radius: 1em;
-    color: #00000099;
+    color: rgba(0,0,0,0.6);
     cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
-// .form_container{
-//     display: flex;
-//     justify-content: center;
-//     flex-wrap: wrap;
-//     height: 100vh;
-// }
+.form_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+p {
+    text-align: center;
+}
