@@ -3,6 +3,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
+import logo from "../../images/icon.png";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -27,7 +28,8 @@ const Header = () => {
           </>
          : 
           <>
-      <span><img src="https://logowik.com/content/uploads/images/linkedin-new4645.jpg" width="180px"  height="100px"></img></span>
+      {/* <span><img src="https://logowik.com/content/uploads/images/linkedin-new4645.jpg"></img></span> */}
+      <span><img src={logo}></img></span>
       <span><Link to="/signup">Unirse ahora</Link></span>
       <span><Link to="/signin"><button>Iniciar sesión</button></Link></span>
           </>
