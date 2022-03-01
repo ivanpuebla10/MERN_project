@@ -7,11 +7,10 @@
     justify-content: space-around;
     padding: 1em;
     background-color: $principal_color;
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
+    color: white !important;
+    font-size: 1rem;
+    font-weight: 550;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    opacity: 0.8;
 }
 
 .header div span{
@@ -20,5 +19,16 @@
 
 a {
     all: unset;
-    cursor: pointer
+    cursor: pointer;
+    color: #00000099 !important;
+}
+
+.header span a button {
+    border-radius: 160px;
+    color: #0a66c2;
+    background-color: transparent;
+    cursor: pointer;
+    border: solid 1px #0a66c2;
+    font-weight: 550;
+
 }

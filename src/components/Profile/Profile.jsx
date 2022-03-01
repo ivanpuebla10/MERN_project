@@ -1,9 +1,15 @@
 import "./Profile.scss";
+import { useSelector } from "react-redux";
+
+
 const url =
   "https://media-exp1.licdn.com/dms/image/C4D03AQE5Qy64sOXApw/profile-displayphoto-shrink_800_800/0/1600971625021?e=1650499200&v=beta&t=XkANpq0aMwXDriB4D6c4QavKhfRgtd91P0A31qUSWPo";
 const banner =
   "https://media.istockphoto.com/photos/tropical-beach-background-picture-id1145474071?k=20&m=1145474071&s=170667a&w=0&h=lHXlJ-EOTn94Y5o6mjpwQvVzfXJDfik-M-P1houbRnQ=";
+
 const Profile = () => {
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <div className="profile">
       <div className="pics_container">
@@ -12,10 +18,9 @@ const Profile = () => {
       </div>
       <div className="profile-container">
         <div className="info-container">
-          <h3>First and Lastname</h3>
-          <date>date of birth</date>
-          <p>City</p>
-          <p>About me</p>
+          <h3>Profile</h3>
+          <p>{user.user.username}</p>
+          <p>{user.user.email}</p>
         </div>
         <div className="posts-profile-container">
           <h4>Post Title</h4>

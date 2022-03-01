@@ -1,5 +1,6 @@
 @import '../../colors.scss';
 
+
 #register_form {
     display: flex;
     flex-direction: column;
@@ -23,7 +24,7 @@ form input{
     color: black;
 }
 
-form button{
+.submit-button{
     all: unset;
     background-color: blue;
     padding: 1em;
@@ -31,9 +32,19 @@ form button{
     color: white;
     cursor: pointer;
 }
-.form_container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 100vh;
+
+.back-button {
+    all: unset;
+    background-color: transparent;
+    padding: 1em;
+    border-radius: 1em;
+    color: #00000099;
+    cursor: pointer;
 }
+
+// .form_container{
+//     display: flex;
+//     justify-content: center;
+//     flex-wrap: wrap;
+//     height: 100vh;
+// }
