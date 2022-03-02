@@ -45,12 +45,12 @@ const [formData, setFormData] = useState({ email: "", password: ""});
     <div className="form_container">
     <form id = "login_form" onSubmit={onSubmit}>
       <h1>Iniciar sesión</h1>
-      <p>Mantente al día de tu mundo profesional</p>
+      <p className="firstp">Mantente al día de tu mundo profesional</p>
         <input type="email" name="email" value={email} id="email" placeholder="Email"  onChange={onChange}/>
         <input type="password" name="password" value={password} id="password" placeholder="Contraseña" onChange={onChange}/>
-        <a href="">¿Has olvidado tu contraseña?</a>
+        <Link className="link" to="/"><p>¿Has olvidado tu contraseña?</p></Link>
         <button type="submit">Iniciar sesión</button>
-        <p>¿Estás empezando a usar LinkedIn?<Link to="/signup">Unirse ahora</Link></p>
+        <p className="secondp">¿Estás empezando a usar LinkedIn?<Link className="link" to="/signup"> Unirse ahora</Link></p>
     </form>
     </div>
     </div>
