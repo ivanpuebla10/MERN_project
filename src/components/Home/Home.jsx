@@ -3,7 +3,6 @@ import Posts from './Posts/Posts'
 import Welcome from '../Welcome/Welcome'
 import { useSelector } from "react-redux";
 
-
 const Home = () => {
   const { user } = useSelector((state) => state.auth);
   return (

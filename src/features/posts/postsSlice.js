@@ -1,9 +1,12 @@
+import { SafetyCertificateFilled } from "@ant-design/icons";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import postsService from "./postsService";
 
 const initialState = {
 posts:[],
-isLoading: false,
+isError: false,
+isSuccess: false,
+message: "",
 post:{}
 };
 
@@ -39,7 +42,6 @@ export const getById = createAsyncThunk("posts/getById", async (_id) => {
     }
   });
   
-  
 export const getAll = createAsyncThunk("posts/getAll", async () => {
   try {
     return await postsService.getAll();
@@ -47,7 +49,6 @@ export const getAll = createAsyncThunk("posts/getAll", async () => {
     console.error(error);
   }
 });
-
 
 export const create = createAsyncThunk(
   "post/create",
@@ -67,6 +68,9 @@ export const postsSlice = createSlice({
     reducers: {
       reset: (state) => {
         state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = false;
+        state.message = "";
       },
     },
     extraReducers: (builder) => {
@@ -100,14 +104,15 @@ export const postsSlice = createSlice({
     })
     state.posts = posts
   });
-  // builder.addCase(create.fulfilled, (state, action) => {
-  //   state.isSuccess = true;
-  //   state.message = action.payload;
-  // })
-  // builder.addCase(create.rejected, (state, action) => {
-  //   state.isError = true;
-  //   state.message = action.payload;
-  // });
+  builder.addCase(create.fulfilled, (state, action) => {
+    state.isSuccess = true;
+    state.message = action.payload;
+    state.posts = [action.payload ,...state.posts]
+  })
+  builder.addCase(create.rejected, (state, action) => {
+    state.isError = true;
+    state.message = action.payload;
+  });
 
     },
   });

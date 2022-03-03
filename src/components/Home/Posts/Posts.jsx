@@ -6,9 +6,8 @@ import AddPost from '../Posts/AddPost/AddPost'
 const Posts = () => {
   return (
     <>
-        <h1>Posts</h1>
-        <Post/>
-        {/* <AddPost/> */}
+        <AddPost/>
+        <Post/>   
     </>
   )
 }

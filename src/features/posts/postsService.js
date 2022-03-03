@@ -12,11 +12,16 @@ const getById = async (_id) => {
   return res.data;
 };
 
-// const create = async (postData) => {
-//   const res = await axios.post(API_URL + "/posts/", postData);
-//   return res.data;
+const create = async (postData) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.post(API_URL + "/posts/" ,postData, {
+    headers: {
+      authorization: user?.token,
+    },
+  });
+  return res.data;
 
-// };
+};
 
 const deletePost = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -25,7 +30,6 @@ const deletePost = async (_id) => {
       authorization: user?.token,
     },
   });
-  console.log(res.data)
   return res.data;
 };
 
@@ -55,7 +59,7 @@ const authService = {
   deletePost,
   like,
   deslike, 
-  // create
+  create
 };
 
 export default authService;
