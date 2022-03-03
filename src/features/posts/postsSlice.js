@@ -48,6 +48,19 @@ export const getAll = createAsyncThunk("posts/getAll", async () => {
   }
 });
 
+
+export const create = createAsyncThunk(
+  "post/create",
+  async (post, thunkAPI) => {
+    try {
+      return await postsService.create(post);
+    } catch (error) {
+      const message = error.response.data[0].message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const postsSlice = createSlice({
     name: "posts",
     initialState,
@@ -87,6 +100,14 @@ export const postsSlice = createSlice({
     })
     state.posts = posts
   });
+  // builder.addCase(create.fulfilled, (state, action) => {
+  //   state.isSuccess = true;
+  //   state.message = action.payload;
+  // })
+  // builder.addCase(create.rejected, (state, action) => {
+  //   state.isError = true;
+  //   state.message = action.payload;
+  // });
 
     },
   });

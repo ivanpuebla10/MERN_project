@@ -12,6 +12,12 @@ const getById = async (_id) => {
   return res.data;
 };
 
+// const create = async (postData) => {
+//   const res = await axios.post(API_URL + "/posts/", postData);
+//   return res.data;
+
+// };
+
 const deletePost = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const res = await axios.delete(API_URL + "/posts/" + _id, {
@@ -48,7 +54,8 @@ const authService = {
   getById,
   deletePost,
   like,
-  deslike
+  deslike, 
+  // create
 };
 
 export default authService;
