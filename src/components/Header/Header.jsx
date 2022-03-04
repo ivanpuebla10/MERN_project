@@ -1,5 +1,5 @@
 import "./Header.scss";
-import React from "react";
+import {React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
@@ -12,10 +12,19 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+  const [text, setText] = useState("");
+
   const onLogout = () => {
     dispatch(logout());
     navigate("/signin");
   };
+  const handleChange = (e) => {
+    setText(e.target.value);
+    if (e.key === "Enter") {
+      navigate('/search/'+ text)
+    }
+  };
+
   return (
     <div className="header">
       
@@ -23,6 +32,7 @@ const Header = () => {
        {user ? 
         <>
           <span><Link to="/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" height="40px" width="40px"></img></Link></span>
+          <input onKeyUp={handleChange} placeholder="search post" name="text" />
           <span><Link to="/"><HomeOutlined style={{ fontSize: '30px'}} /></Link></span>
           <span><Link to="/profile" >{user.user.username.toUpperCase()}</Link> </span>
           <span><Link to="/" onClick={onLogout}>Logout</Link></span>

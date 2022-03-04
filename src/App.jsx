@@ -10,6 +10,7 @@ import Admin from "./components/Admin/Admin";
 import PrivateZone from "./guards/PrivateZone";
 import AdminZone from "./guards/AdminZone";
 import NotFound from './components/NotFound/NotFound';
+import Search from './components/Search/Search';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <Route path="/post/:_id" element={<PostDetail />} />
       <Route path="/admin" element={ <AdminZone><Admin /></AdminZone> }/>
       <Route path="*" element={<NotFound />} />
+      <Route path="/search/:postName" element={<Search />} />
       </Routes>
 
       </Router>

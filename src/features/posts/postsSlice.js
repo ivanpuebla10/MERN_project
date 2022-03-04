@@ -1,4 +1,3 @@
-import { SafetyCertificateFilled } from "@ant-design/icons";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import postsService from "./postsService";
 
@@ -13,6 +12,14 @@ post:{}
 export const getById = createAsyncThunk("posts/getById", async (_id) => {
     try {
       return await postsService.getById(_id);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
+  export const getPostByName = createAsyncThunk("posts/getPostByName", async (postName) => {
+    try {
+      return await postsService.getPostByName(postName);
     } catch (error) {
       console.error(error);
     }
@@ -91,9 +98,11 @@ export const postsSlice = createSlice({
           if (post._id === action.payload._id) {
             post = action.payload;
           }
+          
           return post
       })
       state.posts = posts
+      state.post = action.payload
     });
     builder.addCase(deslike.fulfilled, (state, action) => {
       const posts = state.posts.map((post) => {
@@ -103,6 +112,7 @@ export const postsSlice = createSlice({
         return post
     })
     state.posts = posts
+    state.post = action.payload
   });
   builder.addCase(create.fulfilled, (state, action) => {
     state.isSuccess = true;
@@ -113,7 +123,9 @@ export const postsSlice = createSlice({
     state.isError = true;
     state.message = action.payload;
   });
-
+  builder.addCase(getPostByName.fulfilled, (state, action) => {
+    state.posts = action.payload;
+  });
     },
   });
   

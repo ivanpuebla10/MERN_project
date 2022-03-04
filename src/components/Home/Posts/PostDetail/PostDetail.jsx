@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getById, like } from "../../../../features/posts/postsSlice";
+import { deslike, getById, like } from "../../../../features/posts/postsSlice";
 import "antd/dist/antd.css";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 
@@ -17,7 +17,6 @@ const PostDetail = () => {
   }, []);
 
   const isAlreadyLiked = post.likes?.includes(user?.user?._id);
-
   return (
     <div>
       <h1>PostDetail</h1>
@@ -25,9 +24,9 @@ const PostDetail = () => {
       <p>{post.body}</p>
       <span>Likes:{post.likes?.length}</span>
       {isAlreadyLiked ? (
-          <HeartFilled  onClick={  isAlreadyLiked  ? () => console.log("dislike")  : () => dispatch(like(post._id))  } />
+          <HeartFilled  onClick={  isAlreadyLiked  ? () => dispatch(deslike(post._id)) : () => dispatch(like(post._id))  } />
         ) : (
-          <HeartOutlined onClick={  isAlreadyLiked  ? () => console.log("dislike")  : () => dispatch(like(post._id))  } />
+          <HeartOutlined onClick={  isAlreadyLiked  ? () => dispatch(deslike(post._id)) : () => dispatch(like(post._id))  } />
         )}
 
     </div>
