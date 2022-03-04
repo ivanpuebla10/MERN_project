@@ -39,7 +39,10 @@ const Post = () => {
           </span>
           </>
         ) : (
+          <>
+          <span className="like">Likes: {post.likes?.length} </span>
           <LikeOutlined onClick={  isAlreadyLiked  ? () => dispatch(deslike(post._id))  : () => dispatch(like(post._id))  } />
+        </>
         )}
       </div>
       </div>

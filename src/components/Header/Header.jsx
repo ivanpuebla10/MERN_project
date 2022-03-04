@@ -22,6 +22,8 @@ const Header = () => {
     setText(e.target.value);
     if (e.key === "Enter") {
       navigate('/search/'+ text)
+      setText({ name: ""})
+
     }
   };
 
@@ -32,7 +34,7 @@ const Header = () => {
        {user ? 
         <>
           <span><Link to="/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" height="40px" width="40px"></img></Link></span>
-          <input onKeyUp={handleChange} placeholder="search post" name="text" />
+          <input onKeyUp={handleChange} placeholder="Search post" name="text" className="search_bar"/>
           <span><Link to="/"><HomeOutlined style={{ fontSize: '30px'}} /></Link></span>
           <span><Link to="/profile" >{user.user.username.toUpperCase()}</Link> </span>
           <span><Link to="/" onClick={onLogout}>Logout</Link></span>
