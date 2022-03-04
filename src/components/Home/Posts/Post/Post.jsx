@@ -16,8 +16,14 @@ const Post = () => {
   const { posts, isLoading } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  
 
+  if (isLoading) {
+    return (
+      <h1>
+        <Spin />
+      </h1>
+    );
+  }
   console.log(posts);
   const post = posts?.map((post) => {
     const isAlreadyLiked = post.likes?.includes(user?.user?._id);
