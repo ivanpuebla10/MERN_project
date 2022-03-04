@@ -22,14 +22,11 @@ const Header = () => {
     setText(e.target.value);
     if (e.key === "Enter") {
       navigate('/search/'+ text)
-      setText({ name: ""})
-
     }
   };
 
   return (
     <div className="header">
-      
       <>       
        {user ? 
         <>

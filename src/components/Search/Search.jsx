@@ -6,13 +6,17 @@ import Post from "../Home/Posts/Post/Post";
 
 const Search = () => {
   const { postName } = useParams();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-      dispatch(getPostByName(postName))
+  useEffect(async () => {
+   await dispatch(getPostByName(postName));
   }, [postName]);
 
-  return <div><Post/></div>;
+  return (
+    <div>
+      <Post />
+    </div>
+  );
 };
 
 export default Search;

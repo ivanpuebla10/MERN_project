@@ -6,7 +6,8 @@ posts:[],
 isError: false,
 isSuccess: false,
 message: "",
-post:{}
+post:{},
+isLoading:false
 };
 
 export const getById = createAsyncThunk("posts/getById", async (_id) => {
