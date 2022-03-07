@@ -41,9 +41,11 @@ const onSubmit = (e) => {
     <form id = "create_form" onSubmit={onSubmit}>
     <h1>Create a post</h1>
         <input type="text" name="title" value={title} placeholder="Title" id="title" onChange={onChange} />
-        <input type="text" name="body" value={body} placeholder="Body" id="bpdy" onChange={onChange}/>
-        <button type="submit" className="submit-button">Post</button>
-        <button className="back-button">Cancel</button>
+        <input type="text" name="body" value={body} placeholder="Body" id="body" onChange={onChange}/>
+        <span className="buttons_container">
+        <button type="submit" className="submit-postbutton">Post</button>
+        <button className="back-postbutton">Cancel</button>
+        </span>
     </form>
     </div>
   )

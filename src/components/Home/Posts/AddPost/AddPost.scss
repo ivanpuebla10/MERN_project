@@ -8,7 +8,36 @@
 }
 
 #create_form {
-    width: 100%;
+    text-align: center;
+    width: 60%;
+    max-width: 80% !important;
 }
+
+#body {
+    height: 40%;
+}
+
+input {
+    text-align: left !important;
+}
+
+.buttons_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.submit-postbutton, .back-postbutton {
+    width: 40% !important;
+}
+
+.back-postbutton {
+    background-color: transparent;
+    color: rgba(0,0,0,0.6);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 
 
