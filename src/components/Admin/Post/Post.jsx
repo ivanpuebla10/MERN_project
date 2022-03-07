@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAll, reset, deletePost } from "../../../features/posts/postsSlice";
+import { getAll, reset, deleteEveryPost } from "../../../features/posts/postsSlice";
 
 const Post = () => {
   const { posts, isLoading } = useSelector((state) => state.posts);
@@ -19,7 +19,7 @@ const Post = () => {
     return (
       <div className="post" key={post._id}>
           <p>{post.title}</p>
-          <button onClick={() => dispatch(deletePost(post._id))}>Eliminar</button>
+          <button onClick={() => dispatch(deleteEveryPost(post._id))}>Eliminar</button>
       </div>
     );
   });

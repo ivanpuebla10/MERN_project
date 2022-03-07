@@ -23,6 +23,16 @@ const create = async (postData) => {
 
 };
 
+const deleteEveryPost = async (_id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.delete(API_URL + "/posts/admin/" + _id, {
+    headers: {
+      authorization: user?.token,
+    },
+  });
+  return res.data;
+};
+
 const deletePost = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const res = await axios.delete(API_URL + "/posts/" + _id, {
@@ -61,11 +71,12 @@ const getPostByName = async (postTitle) => {
 const authService = {
   getAll,
   getById,
-  deletePost,
+  deleteEveryPost,
   like,
   deslike, 
   create,
-  getPostByName
+  getPostByName,
+  deletePost
 };
 
 export default authService;

@@ -2,7 +2,7 @@ import "./Profile.scss";
 import { LikeOutlined, LikeFilled } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import { useSelector, useDispatch } from "react-redux";
-import { like, deslike } from "../../features/posts/postsSlice";
+import { like, deslike, deletePost } from "../../features/posts/postsSlice";
 import { Link } from "react-router-dom";
 import { getUserInfo } from "../../features/auth/authSlice";
 import { useEffect } from "react";
@@ -21,6 +21,8 @@ const Profile = () => {
 
   const post = user.user.postIds.map((post) => {
     const isAlreadyLiked = post.likes?.includes(user?.user?._id);
+    const isLiked = post.likes.length;
+
     const onLike = async (_id) => {
       await dispatch(like(_id));
       await dispatch(getUserInfo(_id));
@@ -36,26 +38,65 @@ const Profile = () => {
             <p>{post.title}</p>
             <p>{post.body}</p>
           </Link>
-          {isAlreadyLiked ? (
+{isLiked > 0 ? (
             <span>
               <span className="like">Likes: {post.likes?.length} </span>
-              <LikeFilled
-                onClick={
-                  isAlreadyLiked
-                    ? () => onUnLike(post._id)
-                    : () => onLike(post._id)
-                }
-              />
+              {isAlreadyLiked ? (
+                <>
+                  <span>
+                    <LikeFilled
+                      onClick={
+                        isAlreadyLiked
+                          ? () => dispatch(onUnLike(post._id))
+                          : () => dispatch(onLike(post._id))
+                      }
+                    />
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>
+                    <LikeOutlined
+                      onClick={
+                        isAlreadyLiked
+                          ? () => dispatch(onUnLike(post._id))
+                          : () => dispatch(onLike(post._id))
+                      }
+                    />
+                  </span>
+                </>
+              )}
             </span>
           ) : (
-            <LikeOutlined
-              onClick={
-                isAlreadyLiked
-                  ? () => onUnLike(post._id)
-                  : () => onLike(post._id)
-              }
-            />
+            <>
+              {isAlreadyLiked ? (
+                <>
+                  <span>
+                    <LikeFilled
+                      onClick={
+                        isAlreadyLiked
+                          ? () => dispatch(onUnLike(post._id))
+                          : () => dispatch(onLike(post._id))
+                      }
+                    />
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>
+                    <LikeOutlined
+                      onClick={
+                        isAlreadyLiked
+                          ? () => dispatch(onUnLike(post._id))
+                          : () => dispatch(onLike(post._id))
+                      }
+                    />
+                  </span>
+                </>
+              )}
+            </>
           )}
+          <button onClick={() => dispatch(deletePost(post._id))}>Eliminar</button>
         </div>
       </div>
     );
