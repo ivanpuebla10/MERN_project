@@ -1,5 +1,4 @@
 import "./Post.scss";
-import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAll,
@@ -29,7 +28,7 @@ const Post = () => {
     const isLiked = post.likes.length;
 
     return (
-      <div className="post-container" key={post._id}>
+      <div id="post-container" key={post._id}>
         <div className="post">
           <Link to={"/post/" + post._id}>
             <p>{post.title}</p>

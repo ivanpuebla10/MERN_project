@@ -43,6 +43,16 @@ const deletePost = async (_id) => {
   return res.data;
 };
 
+const editPost = async (_id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(API_URL + "/posts/" + _id, {
+    headers: {
+      authorization: user?.token,
+    },
+  });
+  return res.data;
+};
+
 const like = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const res = await axios.put(API_URL + "/posts/like/"+_id,{}, {
@@ -76,7 +86,8 @@ const authService = {
   deslike, 
   create,
   getPostByName,
-  deletePost
+  deletePost,
+  editPost
 };
 
 export default authService;

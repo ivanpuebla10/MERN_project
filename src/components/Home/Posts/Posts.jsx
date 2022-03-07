@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Post from './Post/Post'
 import AddPost from '../Posts/AddPost/AddPost'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getAll } from '../../../features/posts/postsSlice';
 
 

@@ -9,7 +9,6 @@ const Home = () => {
     <div className="post">
         {user ? 
         <>
-      <h1>Home</h1>
       <Posts/>
           </>
          : 

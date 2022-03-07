@@ -1,3 +1,5 @@
+@import '../../../../colors.scss';
+
 .post {
     display: flex;
     flex-direction: column;
@@ -5,9 +7,11 @@
     justify-content: center;
     width: 100%;
     height: 100%;
+    background-color: #F3F2EF;
 }
 
-.post-container {
+#post-container {
+    background-color: #FFFFFF !important;
     display:flex;
     flex-direction: column;
     align-items: center;

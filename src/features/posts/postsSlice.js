@@ -58,6 +58,14 @@ export const getById = createAsyncThunk("posts/getById", async (_id) => {
     }
   });
 
+  export const editPost = createAsyncThunk("posts/editPost", async (_id) => {
+    try {
+      return await postsService.editPost(_id);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
 export const getAll = createAsyncThunk("posts/getAll", async () => {
   try {
     return await postsService.getAll();
