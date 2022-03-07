@@ -21,7 +21,7 @@ const Register = () => {
       if (isSuccess) {
           notification.success({  message: "Success",  description:message?.message});
           setTimeout(() => {
-            navigate("/login");
+            navigate("/signin");
         }, 1000);
         }
         dispatch(reset())

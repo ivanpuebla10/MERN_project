@@ -24,9 +24,10 @@ const Post = () => {
       </h1>
     );
   }
-  console.log(posts);
   const post = posts?.map((post) => {
     const isAlreadyLiked = post.likes?.includes(user?.user?._id);
+    const isLiked = post.likes.length;
+
     return (
       <div className="post-container" key={post._id}>
         <div className="post">
@@ -34,29 +35,62 @@ const Post = () => {
             <p>{post.title}</p>
             <p>{post.body}</p>
           </Link>
-          {isAlreadyLiked ? (
-            <>
-              <span>
-                <span className="like">Likes: {post.likes?.length} </span>
-                <LikeFilled
-                  onClick={
-                    isAlreadyLiked
-                      ? () => dispatch(deslike(post._id))
-                      : () => dispatch(like(post._id))
-                  }
-                />
-              </span>
-            </>
+          {isLiked > 0 ? (
+            <span>
+              <span className="like">Likes: {post.likes?.length} </span>
+              {isAlreadyLiked ? (
+                <>
+                  <span>
+                    <LikeFilled
+                      onClick={
+                        isAlreadyLiked
+                          ? () => dispatch(deslike(post._id))
+                          : () => dispatch(like(post._id))
+                      }
+                    />
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>
+                    <LikeOutlined
+                      onClick={
+                        isAlreadyLiked
+                          ? () => dispatch(deslike(post._id))
+                          : () => dispatch(like(post._id))
+                      }
+                    />
+                  </span>
+                </>
+              )}
+            </span>
           ) : (
             <>
-              <span className="like">Likes: {post.likes?.length} </span>
-              <LikeOutlined
-                onClick={
-                  isAlreadyLiked
-                    ? () => dispatch(deslike(post._id))
-                    : () => dispatch(like(post._id))
-                }
-              />
+              {isAlreadyLiked ? (
+                <>
+                  <span>
+                    <LikeFilled
+                      onClick={
+                        isAlreadyLiked
+                          ? () => dispatch(deslike(post._id))
+                          : () => dispatch(like(post._id))
+                      }
+                    />
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>
+                    <LikeOutlined
+                      onClick={
+                        isAlreadyLiked
+                          ? () => dispatch(deslike(post._id))
+                          : () => dispatch(like(post._id))
+                      }
+                    />
+                  </span>
+                </>
+              )}
             </>
           )}
         </div>
