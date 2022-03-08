@@ -122,7 +122,6 @@ const Profile = () => {
           <p>{user.user.email}</p>
         </div>
         <div className="posts-profile-container">
-          <h4>Posts</h4>
           <>{post}</>
           {/* <img src={url} className="post-pic"></img> */}
         </div>
