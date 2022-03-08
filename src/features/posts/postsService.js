@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:4000";
+const API_URL = "https://social-network-mongoose.herokuapp.com/";
 
 const getAll = async () => {
   const res = await axios.get(API_URL + "/posts");
