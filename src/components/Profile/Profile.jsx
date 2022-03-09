@@ -42,7 +42,7 @@ const Profile = () => {
       <div className="post-container" key={post._id}>
         <div className="post">
           <Link to={"/post/" + post._id}>
-            <p>{user.user.username}</p>
+            {/* <p>{user.user.username}</p> */}
             <p>{post.title}</p>
             <p>{post.body}</p>
           </Link>
@@ -123,10 +123,10 @@ const Profile = () => {
           <p>{user.user.username}</p>
           <p>{user.user.email}</p>
         </div>
-        <div className="posts-profile-container">
+        <>
           <>{post}</>
           {/* <img src={url} className="post-pic"></img> */}
-        </div>
+        </>
       </div>
     </div>
   );
