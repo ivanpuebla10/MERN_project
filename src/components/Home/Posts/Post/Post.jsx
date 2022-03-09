@@ -1,8 +1,6 @@
 import "./Post.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getAll,
-  reset,
   like,
   deslike,
 } from "../../../../features/posts/postsSlice";
@@ -31,6 +29,7 @@ const Post = () => {
       <div id="post-container" key={post._id}>
         <div className="post">
           <Link to={"/post/" + post._id}>
+            <p>{post.userId.username}</p>
             <p>{post.title}</p>
             <p>{post.body}</p>
           </Link>

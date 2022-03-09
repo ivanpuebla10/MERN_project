@@ -9,12 +9,17 @@ import { LikeOutlined, LikeFilled } from "@ant-design/icons";
 const PostDetail = () => {
   const { _id } = useParams();
   const dispatch = useDispatch();
-  const { post } = useSelector((state) => state.posts);
+  const { post, isLoading } = useSelector((state) => state.posts);
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getById(_id));
   }, []);
+
+
+  if (isLoading) {
+    return <h1>Cargando post...</h1>;
+  }
 
   const isAlreadyLiked = post.likes?.includes(user?.user?._id);
   const isLiked = post.likes.length;

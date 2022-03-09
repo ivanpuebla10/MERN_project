@@ -11,6 +11,7 @@ import PrivateZone from "./guards/PrivateZone";
 import AdminZone from "./guards/AdminZone";
 import NotFound from './components/NotFound/NotFound';
 import Search from './components/Search/Search';
+import EditPost from './components/Home/Posts/EditPost/EditPost';
 
 
 function App() {
@@ -34,6 +35,14 @@ function App() {
             element={
               <PrivateZone>
                 <Profile />
+              </PrivateZone>
+            }
+          />
+        <Route
+            path="/editPost/:_id"
+            element={
+        <PrivateZone>
+                <EditPost />
               </PrivateZone>
             }
           />

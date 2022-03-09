@@ -1,5 +1,5 @@
 import "./AddPost.scss";
-import { create, reset, getAll  } from "../../../../features/posts/postsSlice";
+import { create, reset } from "../../../../features/posts/postsSlice";
 import "antd/dist/antd.css";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
@@ -39,12 +39,12 @@ const onSubmit = (e) => {
   return (
     <div className="create_container"> 
     <form id = "create_form" onSubmit={onSubmit}>
-    <h1>Create a post</h1>
+    <h1>Crear post</h1>
         <input type="text" name="title" value={title} placeholder="Title" id="title" onChange={onChange} />
         <input type="text" name="body" value={body} placeholder="Body" id="body" onChange={onChange}/>
         <span className="buttons_container">
         <button type="submit" className="submit-postbutton">Post</button>
-        <button className="back-postbutton">Cancel</button>
+        <button className="back-postbutton">Cancelar</button>
         </span>
     </form>
     </div>

@@ -58,9 +58,9 @@ export const getById = createAsyncThunk("posts/getById", async (_id) => {
     }
   });
 
-  export const editPost = createAsyncThunk("posts/editPost", async (_id) => {
+  export const editPost = createAsyncThunk("posts/editPost", async (post) => {
     try {
-      return await postsService.editPost(_id);
+      return await postsService.editPost(post);
     } catch (error) {
       console.error(error);
     }
@@ -147,6 +147,19 @@ export const postsSlice = createSlice({
   builder.addCase(getPostByName.fulfilled, (state, action) => {
     state.posts = action.payload;
   });
+  // builder.addCase(editPost.pending, (state) => {
+  //   state.isLoading = true;
+  // });
+  builder.addCase(editPost.fulfilled, (state, action) => {
+    const posts = state.posts.map((post) => {
+      if (post._id === action.payload._id) {
+        post = action.payload;
+      }
+      return post
+  })
+  state.posts = posts
+  state.post = action.payload
+});
     },
   });
   
