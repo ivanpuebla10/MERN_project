@@ -12,6 +12,7 @@ import AdminZone from "./guards/AdminZone";
 import NotFound from './components/NotFound/NotFound';
 import Search from './components/Search/Search';
 import EditPost from './components/Home/Posts/EditPost/EditPost';
+import Welcome from './components/Welcome/Welcome';
 
 
 function App() {
@@ -50,6 +51,8 @@ function App() {
       <Route path="/admin" element={ <AdminZone><Admin /></AdminZone> }/>
       <Route path="*" element={<NotFound />} />
       <Route path="/search/:postName" element={<Search />} />
+      <Route path="/welcome" element={<Welcome />} />
+
       </Routes>
 
       </Router>

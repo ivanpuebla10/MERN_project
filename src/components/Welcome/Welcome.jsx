@@ -2,6 +2,8 @@ import React from 'react'
 import "./Welcome.scss";
 import picture from "../../images/picture.png";
 import picresponsive from "../../images/pictureresponsive.png";
+import { RightOutlined } from "@ant-design/icons";
+
 
 
 const Welcome = () => {
@@ -10,9 +12,9 @@ const Welcome = () => {
     <div className="welcome-phrase">
     <h1>¡Te damos la bienvenida a tu comunidad profesional!</h1>
     <ul>
-      <li>Buscar un empleo</li>
-      <li>Encontrar a personas que conoces</li>
-      <li>Adquirir una nueva aptitud</li>
+      <li>Buscar un empleo<RightOutlined className="arrow"/></li>
+      <li>Encontrar a personas que conoces<RightOutlined className="arrow"/></li>
+      <li>Adquirir una nueva aptitud<RightOutlined className="arrow"/></li>
     </ul>
     </div>
     <div className="img-container">

@@ -37,7 +37,7 @@ const Header = () => {
           <span><Link to="/"> <MessageFilled style={{ fontSize: '25px'}}/></Link></span>
           <span><Link to="/"> <BellFilled style={{ fontSize: '25px'}}/></Link></span>
           <span><Link to="/profile" ><img className="profile-picture" src="https://media-exp1.licdn.com/dms/image/C5112AQHJ0-bLpEHpZQ/article-inline_image-shrink_1000_1488/0/1544212376133?e=1648684800&v=beta&t=o_YQaPYUOEACsahYSepY2D-SCfY_HmsxDZ4ROWrCtfc"></img></Link> </span>
-          <span><Link to="/" onClick={onLogout}>Cerrar sesión</Link></span>
+          <span><Link to="/welcome" onClick={onLogout}>Cerrar sesión</Link></span>
           </>
          : 
           <>
