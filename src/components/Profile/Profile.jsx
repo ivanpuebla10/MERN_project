@@ -17,7 +17,6 @@ const Profile = () => {
   const dispatch = useDispatch();
   useEffect(async () => {
     await dispatch(getUserInfo());
-    // await dispatch(reset());
   }, []);
 
   const post = user.user.postIds.map((post) => {
@@ -42,9 +41,9 @@ const Profile = () => {
       <div className="post-container" key={post._id}>
         <div className="post">
           <Link to={"/post/" + post._id}>
-            {/* <p>{user.user.username}</p> */}
             <p>{post.title}</p>
             <p>{post.body}</p>
+            <Link to={"/post/" + post._id}><p>{post.comments.length} comentarios</p></Link>
           </Link>
 {isLiked > 0 ? (
             <span>

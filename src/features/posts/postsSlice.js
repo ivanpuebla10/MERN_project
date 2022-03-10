@@ -2,69 +2,86 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import postsService from "./postsService";
 
 const initialState = {
-posts:[],
-isError: false,
-isSuccess: false,
-message: "",
-post:{},
-isLoading:false
+  posts: [],
+  isError: false,
+  isSuccess: false,
+  message: "",
+  post: {},
+  isLoading: false,
 };
 
 export const getById = createAsyncThunk("posts/getById", async (_id) => {
-    try {
-      return await postsService.getById(_id);
-    } catch (error) {
-      console.error(error);
-    }
-  });
+  try {
+    return await postsService.getById(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
 
-  export const getPostByName = createAsyncThunk("posts/getPostByName", async (postName) => {
+export const getPostByName = createAsyncThunk(
+  "posts/getPostByName",
+  async (postName) => {
     try {
       return await postsService.getPostByName(postName);
     } catch (error) {
       console.error(error);
     }
-  });
+  }
+);
 
-  export const like = createAsyncThunk("posts/like", async (_id) => {
-    try {
-      return await postsService.like(_id);
-    } catch (error) {
-      console.error(error);
-    }
-  });  
+export const like = createAsyncThunk("posts/like", async (_id) => {
+  try {
+    return await postsService.like(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
 
-  export const deslike = createAsyncThunk("posts/deslike", async (_id) => {
-    try {
-      return await postsService.deslike(_id);
-    } catch (error) {
-      console.error(error);
-    }
-  });  
+export const deslike = createAsyncThunk("posts/deslike", async (_id) => {
+  try {
+    return await postsService.deslike(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
 
-  export const deleteEveryPost = createAsyncThunk("posts/deleteEveryPost", async (_id) => {
+export const deleteEveryPost = createAsyncThunk(
+  "posts/deleteEveryPost",
+  async (_id) => {
     try {
       return await postsService.deleteEveryPost(_id);
     } catch (error) {
       console.error(error);
     }
-  });
-  
-  export const deletePost = createAsyncThunk("posts/deletePost", async (_id) => {
-    try {
-      return await postsService.deletePost(_id);
-    } catch (error) {
-      console.error(error);
-    }
-  });
+  }
+);
 
-  export const editPost = createAsyncThunk("posts/editPost", async (post) => {
+export const deletePost = createAsyncThunk("posts/deletePost", async (_id) => {
+  try {
+    return await postsService.deletePost(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+export const editPost = createAsyncThunk("posts/editPost", async (post) => {
+  try {
+    return await postsService.editPost(post);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+export const insertComment = createAsyncThunk(
+  "posts/insertComment",
+  async (post) => {
     try {
-      return await postsService.editPost(post);
+      return await postsService.insertComment(post);
     } catch (error) {
       console.error(error);
     }
-  });
+  }
+);
 
 export const getAll = createAsyncThunk("posts/getAll", async () => {
   try {
@@ -87,81 +104,88 @@ export const create = createAsyncThunk(
 );
 
 export const postsSlice = createSlice({
-    name: "posts",
-    initialState,
-    reducers: {
-      reset: (state) => {
-        state.isLoading = false;
-        state.isError = false;
-        state.isSuccess = false;
-        state.message = "";
-      },
+  name: "posts",
+  initialState,
+  reducers: {
+    reset: (state) => {
+      state.isLoading = false;
+      state.isError = false;
+      state.isSuccess = false;
+      state.message = "";
     },
-    extraReducers: (builder) => {
-      builder.addCase(getAll.fulfilled, (state, action) => {
-        state.posts = action.payload;
-        state.isLoading = false;
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getAll.fulfilled, (state, action) => {
+      state.posts = action.payload;
+      state.isLoading = false;
+    });
+    builder.addCase(getAll.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getById.fulfilled, (state, action) => {
+      state.post = action.payload;
+    });
+    builder.addCase(getById.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(deleteEveryPost.fulfilled, (state, action) => {
+      state.posts = state.posts.filter(
+        (post) => post._id !== action.payload.post._id
+      );
+    });
+    builder.addCase(deletePost.fulfilled, (state, action) => {
+      state.posts = state.posts.filter(
+        (post) => post._id !== action.payload.post._id
+      );
+    });
+    builder.addCase(like.fulfilled, (state, action) => {
+      const posts = state.posts.map((post) => {
+        if (post._id === action.payload._id) {
+          post = action.payload;
+        }
+
+        return post;
       });
-      builder.addCase(getAll.pending, (state) => {
-        state.isLoading = true;
-      });
-      builder.addCase(getById.fulfilled, (state, action) => {
-        state.post = action.payload;
-      });  
-      builder.addCase(deleteEveryPost.fulfilled, (state,action) => {
-        state.posts = state.posts.filter((post) => post._id !== action.payload.post._id);
-      });
-      builder.addCase(deletePost.fulfilled, (state,action) => {
-        state.posts = state.posts.filter((post) => post._id !== action.payload.post._id);
-      });
-      builder.addCase(like.fulfilled, (state, action) => {
-        const posts = state.posts.map((post) => {
-          if (post._id === action.payload._id) {
-            post = action.payload;
-          }
-          
-          return post
-      })
-      state.posts = posts
-      state.post = action.payload
+      state.posts = posts;
+      state.post = action.payload;
     });
     builder.addCase(deslike.fulfilled, (state, action) => {
       const posts = state.posts.map((post) => {
         if (post._id === action.payload._id) {
           post = action.payload;
         }
-        return post
-    })
-    state.posts = posts
-    state.post = action.payload
-  });
-  builder.addCase(create.fulfilled, (state, action) => {
-    state.isSuccess = true;
-    state.message = action.payload;
-    state.posts = [action.payload ,...state.posts]
-  })
-  builder.addCase(create.rejected, (state, action) => {
-    state.isError = true;
-    state.message = action.payload;
-  });
-  builder.addCase(getPostByName.fulfilled, (state, action) => {
-    state.posts = action.payload;
-  });
-  // builder.addCase(editPost.pending, (state) => {
-  //   state.isLoading = true;
-  // });
-  builder.addCase(editPost.fulfilled, (state, action) => {
-    const posts = state.posts.map((post) => {
-      if (post._id === action.payload._id) {
-        post = action.payload;
-      }
-      return post
-  })
-  state.posts = posts
-  state.post = action.payload
+        return post;
+      });
+      state.posts = posts;
+      state.post = action.payload;
+    });
+    builder.addCase(create.fulfilled, (state, action) => {
+      state.isSuccess = true;
+      state.message = action.payload;
+      state.posts = [action.payload, ...state.posts];
+    });
+    builder.addCase(create.rejected, (state, action) => {
+      state.isError = true;
+      state.message = action.payload;
+    });
+    builder.addCase(getPostByName.fulfilled, (state, action) => {
+      state.posts = action.payload;
+    });
+    builder.addCase(editPost.fulfilled, (state, action) => {
+      const posts = state.posts.map((post) => {
+        if (post._id === action.payload._id) {
+          post = action.payload;
+        }
+        return post;
+      });
+      state.posts = posts;
+      state.post = action.payload;
+    });
+    builder.addCase(insertComment.fulfilled, (state, action) => {
+      state.post = action.payload;
+    });
+  },
 });
-    },
-  });
-  
-  export const { reset } = postsSlice.actions;
-  export default postsSlice.reducer;
+
+export const { reset } = postsSlice.actions;
+export default postsSlice.reducer;

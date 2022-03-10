@@ -2,14 +2,16 @@ import { editPost, getById, reset } from "../../../../features/posts/postsSlice"
 import "antd/dist/antd.css";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditPost = () => {
   const { post, isLoading } = useSelector((state) => state.posts);
   const dispatch = useDispatch()
   const { _id } = useParams();
-  const [formData, setFormData] = useState({ title: post.title ,body: post.body ,_id});
+  const [formData, setFormData] = useState({ title: post.title ,body: post.body , _id});
   const { title, body } = formData;
+  const navigate = useNavigate();
+
 
   useEffect(() =>   {
     getById(_id)
@@ -33,8 +35,10 @@ const EditPost = () => {
 const onSubmit = (e) => {
   e.preventDefault();
         dispatch(editPost(formData));
-        console.log(formData)
       setFormData({ title: "",body: ""})
+      setTimeout(() => {
+        navigate("/profile");
+      }, 2000);    
     }
 
   return (

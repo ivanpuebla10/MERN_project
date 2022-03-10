@@ -45,13 +45,21 @@ const deletePost = async (_id) => {
 
 const editPost = async (post) => {
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(post)
   const res = await axios.put(API_URL + "/posts/" + post._id, post, {
     headers: {
       authorization: user?.token,
     },
   });
-  console.log(res.data)
+  return res.data;
+};
+
+const insertComment = async (post) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(API_URL + "/posts/comments/" + post.postId, post, {
+    headers: {
+      authorization: user?.token,
+    },
+  });
   return res.data;
 };
 
@@ -89,7 +97,8 @@ const authService = {
   create,
   getPostByName,
   deletePost,
-  editPost
+  editPost,
+  insertComment
 };
 
 export default authService;

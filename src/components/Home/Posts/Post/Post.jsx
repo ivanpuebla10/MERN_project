@@ -32,6 +32,7 @@ const Post = () => {
             <p>{post.userId.username}</p>
             <p>{post.title}</p>
             <p>{post.body}</p>
+            <p>Ver {post.comments.length} comentarios</p>
           </Link>
           {isLiked > 0 ? (
             <span>
