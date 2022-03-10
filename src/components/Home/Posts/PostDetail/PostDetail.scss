@@ -14,6 +14,8 @@
     height: auto;
     margin: 20px;
     background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 12px;
 }
 
 .post-detail-container {
@@ -33,4 +35,27 @@
 .comment-input {
     border: 1px solid #E0DFDC;
     border-radius: 25px;
+}
+
+div.comment-box {
+    background-color: #F3F2EF !important;
+    margin: 20px;
+    border: 1px solid #E0DFDC;
+    border-radius: 12px;
+
+}
+
+.comment-p {
+    margin: 2px !important;
+}
+
+.comment-pic-mini {
+    width: 25px;
+    height: 25px;
+    border-radius: 160px;
+    margin: 10px
+}
+
+#comment-user {
+    font-weight: 900;
 }

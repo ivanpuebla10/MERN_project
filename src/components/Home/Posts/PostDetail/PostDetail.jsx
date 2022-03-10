@@ -112,9 +112,12 @@ const onSubmit = (e) => {
           )}
 
       <p>{post.comments?.length} comentarios</p>
-      <p>{post.comments?.map(comment => <>
-      <p>{comment.comment?.userId?.username}</p>
-      <p>{comment.comment}</p></>)}</p>
+      <div >{post.comments?.map(comment => <div className="comment-box">
+        <span>
+      <img className="comment-pic-mini" src="https://media-exp1.licdn.com/dms/image/C5112AQHJ0-bLpEHpZQ/article-inline_image-shrink_1000_1488/0/1544212376133?e=1648684800&v=beta&t=o_YQaPYUOEACsahYSepY2D-SCfY_HmsxDZ4ROWrCtfc"></img>
+      <p className="comment-p" id="comment-user">{comment?.userId?.username}</p>
+      </span>
+      <p className="comment-p">{comment.comment}</p></div>)}</div>
 
         <form id="comment_form" onSubmit={onSubmit}>
         <span>

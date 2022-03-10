@@ -1,3 +1,4 @@
+import "./EditPost.scss";
 import { editPost, getById, reset } from "../../../../features/posts/postsSlice";
 import "antd/dist/antd.css";
 import React, { useState, useEffect } from "react";
@@ -42,8 +43,8 @@ const onSubmit = (e) => {
     }
 
   return (
-    <div className="create_container"> 
-    <form id = "create_form" onSubmit={onSubmit}>
+    <div className="edit_container"> 
+    <form id = "edit_form" onSubmit={onSubmit}>
     <h1>Editar post</h1>
         <input type="text" name="title" value={title} placeholder="Title" id="title" onChange={onChange} />
         <input type="text" name="body" value={body} placeholder="Body" id="body" onChange={onChange}/>
