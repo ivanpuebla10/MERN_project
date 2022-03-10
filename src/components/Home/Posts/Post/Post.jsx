@@ -27,16 +27,18 @@ const Post = () => {
 
     return (
       <div id="post-container" key={post._id}>
-        <div className="post">
           <Link to={"/post/" + post._id}>
-            <p>{post.userId.username}</p>
-            <p>{post.title}</p>
-            <p>{post.body}</p>
-            <p>Ver {post.comments.length} comentarios</p>
+            <span className="user-reference">
+            <img className="profile-picture" src="https://media-exp1.licdn.com/dms/image/C5112AQHJ0-bLpEHpZQ/article-inline_image-shrink_1000_1488/0/1544212376133?e=1648684800&v=beta&t=o_YQaPYUOEACsahYSepY2D-SCfY_HmsxDZ4ROWrCtfc"></img>
+            <p id="user">{post.userId.username}</p>
+            </span>
+            <p id="title">{post.title}</p>
+            <p id="body">{post.body}</p>
           </Link>
+          <span className="interactions">
           {isLiked > 0 ? (
-            <span>
-              <span className="like">Likes: {post.likes?.length} </span>
+            <span >
+              <span>Likes: {post.likes?.length} </span>
               {isAlreadyLiked ? (
                 <>
                   <span>
@@ -92,7 +94,8 @@ const Post = () => {
               )}
             </>
           )}
-        </div>
+          <span>{post.comments.length} comentarios</span>
+          </span>
       </div>
     );
   });

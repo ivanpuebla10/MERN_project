@@ -39,8 +39,8 @@ const Profile = () => {
 
     return (
       <div className="post-container" key={post._id}>
-        <div className="post">
           <Link to={"/post/" + post._id}>
+            <p>{user.user.username}</p>
             <p>{post.title}</p>
             <p>{post.body}</p>
             <Link to={"/post/" + post._id}><p>{post.comments.length} comentarios</p></Link>
@@ -105,7 +105,6 @@ const Profile = () => {
           )}
           <button onClick={() => deleteProfilePost(post._id)}>Eliminar</button>
           <Link to={"/editPost/" + post._id}><button>Editar</button></Link>
-        </div>
       </div>
     );
   });

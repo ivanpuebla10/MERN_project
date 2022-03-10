@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
 import logo from "../../images/icon.png";
-import { HomeFilled, MessageFilled, BellFilled, ContactsFilled, ShoppingFilled } from "@ant-design/icons";
+import { HomeFilled, MessageFilled, BellFilled, ContactsFilled, ShoppingFilled, SearchOutlined } from "@ant-design/icons";
 
 
 const Header = () => {
@@ -29,13 +29,16 @@ const Header = () => {
       <>       
        {user ? 
         <>
-          <span className="mini_logo"><Link to="/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" height="40px" width="40px"></img></Link></span>
+          <span className="mini_logo"><Link to="/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" height="35px" width="35px"></img></Link></span>
+          <span>
+          {/* <span><Link to="/"><SearchOutlined style={{ fontSize: '20px', background: '#EEF3F8', height: '100%'}}/></Link></span> */}
           <input onKeyUp={handleChange} placeholder="Buscar post..." name="text" className="search_bar"/>
-          <span><Link to="/"><HomeFilled style={{ fontSize: '25px'}} /></Link></span>
-          <span><Link to="/"> <ContactsFilled style={{ fontSize: '25px'}}/></Link></span>
-          <span><Link to="/"> <ShoppingFilled style={{ fontSize: '25px'}}/></Link></span>
-          <span><Link to="/"> <MessageFilled style={{ fontSize: '25px'}}/></Link></span>
-          <span><Link to="/"> <BellFilled style={{ fontSize: '25px'}}/></Link></span>
+          </span>
+          <span><Link to="/"><HomeFilled style={{ fontSize: '22px'}} /></Link></span>
+          <span><Link to="/"> <ContactsFilled style={{ fontSize: '22px'}}/></Link></span>
+          <span><Link to="/"> <ShoppingFilled style={{ fontSize: '22px'}}/></Link></span>
+          <span><Link to="/"> <MessageFilled style={{ fontSize: '22px'}}/></Link></span>
+          <span><Link to="/"> <BellFilled style={{ fontSize: '22px'}}/></Link></span>
           <span><Link to="/profile" ><img className="profile-picture" src="https://media-exp1.licdn.com/dms/image/C5112AQHJ0-bLpEHpZQ/article-inline_image-shrink_1000_1488/0/1544212376133?e=1648684800&v=beta&t=o_YQaPYUOEACsahYSepY2D-SCfY_HmsxDZ4ROWrCtfc"></img></Link> </span>
           <span><Link to="/welcome" onClick={onLogout}>Cerrar sesión</Link></span>
           </>

@@ -1,3 +1,4 @@
+import "./PostDetail.scss";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -14,7 +15,6 @@ const PostDetail = () => {
   const { user } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({ comment: '' ,postId:_id });
   const { comment } = formData;
-
 
   useEffect(async () => {
     await dispatch(getById(_id));
@@ -40,9 +40,15 @@ const onSubmit = (e) => {
 
   const isAlreadyLiked = post?.likes?.includes(user.user._id);
   const isLiked = post?.likes?.length;
+  console.log(post)
 
   return (
-    <div>
+    <div className="post-detail-container">
+    <div className="post-detail">
+      <span className="user-reference">
+            <img className="profile-picture" src="https://media-exp1.licdn.com/dms/image/C5112AQHJ0-bLpEHpZQ/article-inline_image-shrink_1000_1488/0/1544212376133?e=1648684800&v=beta&t=o_YQaPYUOEACsahYSepY2D-SCfY_HmsxDZ4ROWrCtfc"></img>
+            <p id="user">{post?.userId?.username}</p>
+            </span>
       <p>{post?.title}</p>
       <p>{post?.body}</p>
 
@@ -111,9 +117,13 @@ const onSubmit = (e) => {
       <p>{comment.comment}</p></>)}</p>
 
         <form id="comment_form" onSubmit={onSubmit}>
-        <input type="text" name="comment"  value = {comment} placeholder="Insertar commentario" onChange={onChange} />
+        <span>
+        <img className="comment-pic" src="https://media-exp1.licdn.com/dms/image/C5112AQHJ0-bLpEHpZQ/article-inline_image-shrink_1000_1488/0/1544212376133?e=1648684800&v=beta&t=o_YQaPYUOEACsahYSepY2D-SCfY_HmsxDZ4ROWrCtfc"></img>
+        <input type="text" name="comment"  className="comment-input" value = {comment} placeholder="Añadir un comentario" onChange={onChange} />
+        </span>
         <button type="submit" className="submit-postbutton">Comentar</button>
         </form>
+    </div>
     </div>
   );
 };

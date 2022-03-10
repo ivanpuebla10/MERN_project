@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 1em;
+    padding: 0.6em;
     background-color: $principal_color;
     color: white !important;
     font-size: 1rem;
@@ -39,11 +39,14 @@ a {
 
 .search_bar {
     color: #00000099;
+    border: none;
+    background: #EEF3F8!important;
+    border-radius: 2px;
 }
 
 .profile-picture {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 160px;
 }
 

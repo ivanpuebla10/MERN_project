@@ -39,12 +39,12 @@ const onSubmit = (e) => {
   return (
     <div className="create_container"> 
     <form id = "create_form" onSubmit={onSubmit}>
-    <h1>Crear post</h1>
-        <input type="text" name="title" value={title} placeholder="Title" id="title" onChange={onChange} />
-        <input type="text" name="body" value={body} placeholder="Body" id="body" onChange={onChange}/>
+    <h1>Crear una publicación</h1>
+        <input type="text" name="title" value={title} placeholder="Titulo" id="title" onChange={onChange} />
+        <input type="text" name="body" value={body} placeholder="¿Sobre que quieres hablar?" id="body" onChange={onChange}/>
         <span className="buttons_container">
-        <button type="submit" className="submit-postbutton">Post</button>
         <button className="back-postbutton">Cancelar</button>
+        <button type="submit" className="submit-postbutton">Publicar</button>
         </span>
     </form>
     </div>
