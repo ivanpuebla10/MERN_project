@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Social Network
+This is a MERN Stack project(MongoDB, Express, React and Node. js.) developed in The Bridge's bootcamp. I have also used Sass for the styles, based in some linkedin's styles.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Some features
+* Register(validations implemented in frontend and backend)
+* Login(validations implemented in frontend and backend)
+* Post
+* Edit posts
+* Like, unlike
+* Search post by name
+* Comments
+* Delete posts
 
-## Available Scripts
+### Views
+* Welcome view
+* Profile (where you can find your personal user information and your posts).
+* Post detail (if you click on the post, you will be redirected to a view where you can see only that post, and it's comments. You can also comment the post in this view).
+* Home (where you can find all the posts, it's likes, comments and user's information).
+* Admin (this project has roles implemented(user, author and admin), so in this view if you are the admin you can delete every post).
+* 404 not found
 
-In the project directory, you can run:
+### Endpoints
+* Create user
+* Log in
+* Update user
+* Get all users
+* Log out
+* Get user logged info
+* Recover password
+* Reset password
+* Confirm email
+* Follow, unfollow
 
-### `npm start`
+* Add Post
+* Edit Post
+* Delete Post
+* Get all posts
+* Get post by ID
+* Insert comment
+* Update comment
+* Delete comment
+* Like post
+* Unlike post
+* Like comment
+* Unlike comment
+* Upload images
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Some images
+Sign in:
+![foto](./src/images/login.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Sign up
+![foto](./src/images/register.png)
 
-### `npm test`
+Welcome view
+![foto](./src/images/welcome.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### This App was debugged in heroku: https://sn-clase-frontend.herokuapp.com/welcome
+#### Likn to the backend's repository: https://github.com/ivanpuebla10/proyectoback2
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Author ✒️
+* **Ivan Puebla** - *The Bridge* - [ivanpuebla10](https://github.com/ivanpuebla10)
