@@ -1,4 +1,5 @@
 # Social Network
+(Images could be broken because heroku doesn't keep them for long)
 This is a MERN Stack project(MongoDB, Express, React and Node. js.) developed in The Bridge's bootcamp. I have also used Sass for the styles, based in some linkedin's styles.
 
 ## Some features
